@@ -1,0 +1,19 @@
+//
+//  Development.xcconfig
+//  SwiftUICombine
+//
+//  Created by Adel Aref on 14/11/2024.
+//
+
+// Configuration settings file format documentation can be found at:
+
+Base_URL = api.themoviedb.org/3/
+Scheme = https
+API_Key = 57e37940dac450c168b4d63322870c8e
+
+// App Settings
+APP_NAME = JAHEZ (dev)
+APP_BUNDLE_ID = com.jahez.swiftuiDemo.dev
+
+
+
