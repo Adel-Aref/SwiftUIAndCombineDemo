@@ -6,5 +6,6 @@
 //
 import Combine
 protocol MoviesUseCaseContract {
-    func executeGenres() -> AnyPublisher<[GenreResponse], Error>
+    func executeGenres() -> AnyPublisher<GenreResponse, Error>
+    func executeMovies(with genreID: Int?, and page: Int) -> AnyPublisher<MoviesResponse, Error>
 }

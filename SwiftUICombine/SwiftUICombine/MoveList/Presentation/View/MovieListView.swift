@@ -7,110 +7,81 @@
 
 import SwiftUI
 
-// Main View
 struct MovieListView: View {
-    @State private var categories: [CategoryModel] = [
-        CategoryModel(title: "Action", isSelected: false),
-        CategoryModel(title: "Adventure", isSelected: false),
-        CategoryModel(title: "Animation", isSelected: true),
-        CategoryModel(title: "Comedy", isSelected: false),
-        CategoryModel(title: "Crime", isSelected: false)
-    ]
-
+    @StateObject var viewModel = MovieListViewModel()
     @State private var selectedCategory: String = "Animation"
 
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 16) {
-                SearchBarView(placeholder: "Search TMDB")
-
+                SearchBarView(placeholder: "Search TMDB", text: $viewModel.searchText)
+                
                 Text("Watch New Movies")
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.yellow)
                     .padding(.horizontal)
-
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 10) {
-                        ForEach(categories) { category in
-                            FilterTabView(category: category) {
-                                selectCategory(category)
-                            }
+                
+                switch viewModel.state {
+                case .idle:
+                    EmptyView()
+                case .loading(let message):
+                    VStack {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .yellow))
+                        if let message = message {
+                            Text(message)
+                                .font(.caption)
+                                .foregroundColor(.gray)
                         }
                     }
-                    .padding(.horizontal)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black.opacity(0.6).ignoresSafeArea())
+                    .cornerRadius(12)
+                case .successful:
+                    ScrollViewReader { scrollView in
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 0) {
+                                ForEach(viewModel.genreFilterList) { category in
+                                    FilterTabView(category: category, isSelected: category.isSelected) {
+                                        viewModel.selectCategory(category)
+                                        withAnimation {
+                                            scrollView.scrollTo(category.title, anchor: .center)
+                                        }
+                                    }
+                                    .id(category.title)
+                                    .padding(.horizontal)
+                                }
+                            }
+                            .padding(.horizontal)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                        }
+                    }
+                    
+                    ScrollView(showsIndicators: false,
+                               content: {
+                        LazyVStack(alignment: .leading, spacing: 12) {
+                            MovieGridView(movies: viewModel.filteredMovies, viewModel: viewModel)
+                                .padding(.horizontal)
+                            Spacer()
+                        }
+                    })
+                case .failed(let error):
+                    Text("Failed to load genres: \(error.localizedDescription)")
+                        .foregroundColor(.red)
+                        .multilineTextAlignment(.center)
+                        .padding()
                 }
-
-                MovieGridView(movies: Movie.sampleData)
-                    .padding(.horizontal)
+                
                 Spacer()
             }
             .background(Color.black.ignoresSafeArea())
             .navigationBarHidden(true)
         }
     }
-
-    private func selectCategory(_ selectedCategory: CategoryModel) {
-        // Update the state to set only one category as selected
-        for i in categories.indices {
-            categories[i].isSelected = (categories[i].id == selectedCategory.id)
-        }
-        self.selectedCategory = selectedCategory.title
-        print("Selected category: \(selectedCategory.title)")
-    }
-}
-
-struct MovieGridView: View {
-    let movies: [Movie]
-    private let columns = [GridItem(.flexible()), GridItem(.flexible())]
-
-    var body: some View {
-        LazyVGrid(columns: columns, spacing: 16) {
-            ForEach(movies) { movie in
-                MovieCardView(movie: movie)
-            }
-        }
-    }
-}
-
-// Movie Card Component
-struct MovieCardView: View {
-    let movie: Movie
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            Image(movie.poster)
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(8)
-
-            Text(movie.title)
-                .font(.headline)
-                .foregroundColor(.white)
-                .lineLimit(1)
-
-            Text("\(movie.releaseYear)")
-                .font(.subheadline)
-                .foregroundColor(.gray)
-        }
-    }
-}
-
-// Movie Model
-struct Movie: Identifiable {
-    let id = UUID()
-    let title: String
-    let releaseYear: Int
-    let poster: String
-
-    static let sampleData = [
-        Movie(title: "Ratatouille", releaseYear: 2007, poster: "ratatouille"),
-        Movie(title: "Toy Story", releaseYear: 1995, poster: "toystory"),
-        Movie(title: "The Boss Baby: Family Business", releaseYear: 2021, poster: "bossbaby"),
-        Movie(title: "Tangled", releaseYear: 2010, poster: "tangled")
-    ]
 }
 
 #Preview {
     MovieListView()
 }
+

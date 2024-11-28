@@ -8,5 +8,7 @@
 import Combine
 
 protocol MoviesListRepositoryContract {
-    func fetchGenresList() -> AnyPublisher<[GenreResponse], Error>
+    func fetchGenresList() -> AnyPublisher<GenreResponse, Error>
+    
+    func fetchMoviesList(with genreId: Int?, and page: Int) -> AnyPublisher<MoviesResponse, Error>
 }

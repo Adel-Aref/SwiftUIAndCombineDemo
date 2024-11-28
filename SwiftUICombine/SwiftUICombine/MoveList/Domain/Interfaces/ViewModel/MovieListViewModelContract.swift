@@ -8,15 +8,15 @@
 import Foundation
 import Combine
 
-typealias MovieListViewModelContract = ObservableObject  & MovieListViewModelInput & MovieListViewModelOutput
+typealias MovieListViewModelContract = BaseViewModel & ObservableObject  & MovieListViewModelInput & MovieListViewModelOutput
 
 protocol MovieListViewModelInput {
-    var movieList: [Movie] { get set }
-    var genreList: [GenreVM] { get set }
-    func getMovieList()
+    func getMovieList(with genreId: Int?, and page: Int)
     func getGenreList()
 }
 
 protocol MovieListViewModelOutput {
-    var movieID : String { get }
+//    var movieID : String { get }
+    var genreFilterList: [CategoryModel] { get set }
+    var movieList: [MovieVM] { get set }
 }

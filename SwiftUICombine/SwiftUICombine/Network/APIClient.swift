@@ -32,33 +32,43 @@ extension URLSession: URLSessionProtocol {}
 
 class URLSessionAPIClient<EndpointType: APIEndpoint>: APIContract {
     private var session: URLSessionProtocol
-
+    
     // MARK: - Init
-
+    
     init(session: URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
-
+    
     // MARK: - Request
-
+    
     func request<T: Decodable>(_ endpoint: EndpointType, responseModel: T.Type) -> AnyPublisher<T, Error> {
-        let url = endpoint.baseURL.appendingPathComponent(endpoint.path)
+        
+        // Build the URL
+        var urlComponents = URLComponents(url: endpoint.baseURL.appendingPathComponent(endpoint.path), resolvingAgainstBaseURL: false)
+        urlComponents?.queryItems = endpoint.queryParameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+        
+        guard let url = urlComponents?.url else {
+            return Fail(error: APIError.requestFailed).eraseToAnyPublisher()
+        }
+        
+        // Create the URLRequest
+        
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.httpBody = endpoint.body
         endpoint.headers?.forEach { request.addValue($0.value, forHTTPHeaderField: $0.key) }
-
+        
         return session.dataTaskPublisher(for: request)
             .subscribe(on: DispatchQueue.global(qos: .background))
             .tryMap { data, response -> Data in
                 guard let httpResponse = response as? HTTPURLResponse else {
                     throw APIError.requestFailed
                 }
-
+                
                 guard (200 ... 299).contains(httpResponse.statusCode) else {
                     throw APIError.customError(statusCode: httpResponse.statusCode)
                 }
-
+                
                 return data
             }
             .decode(type: responseModel, decoder: JSONDecoder())

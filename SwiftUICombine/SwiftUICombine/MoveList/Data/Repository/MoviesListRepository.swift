@@ -18,7 +18,11 @@ final class MoviesListRepository: MoviesListRepositoryContract {
     }
 
     // MARK: - REPOSITORIES METHODS
-    func fetchGenresList() -> AnyPublisher<[GenreResponse], Error> {
+    func fetchGenresList() -> AnyPublisher<GenreResponse, Error> {
         return service.fetchGenresList()
+    }
+    
+    func fetchMoviesList(with genreId: Int?, and page: Int) -> AnyPublisher<MoviesResponse, Error> {
+        return service.fetchMoviesList(with: genreId, and: page)
     }
 }

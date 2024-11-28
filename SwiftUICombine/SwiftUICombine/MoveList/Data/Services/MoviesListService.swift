@@ -15,7 +15,11 @@ final class MoviesListService: DisposeObject, MoviesListServiceContract {
         self.apiClient = apiClient as! URLSessionAPIClient<MoviesListEndpoint>
     }
     
-    func fetchGenresList() -> AnyPublisher<[GenreResponse], Error> {
-        return apiClient.request(.fetchGenresList, responseModel: [GenreResponse].self)
+    func fetchGenresList() -> AnyPublisher<GenreResponse, Error> {
+        return apiClient.request(.fetchGenresList, responseModel: GenreResponse.self)
+    }
+    
+    func fetchMoviesList(with genreID: Int? = nil, and page: Int) -> AnyPublisher<MoviesResponse, Error> {
+        return apiClient.request(.fetchMoviesList(genreID: genreID, page: page), responseModel: MoviesResponse.self)
     }
 }

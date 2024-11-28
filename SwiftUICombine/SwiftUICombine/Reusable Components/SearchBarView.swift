@@ -8,19 +8,22 @@
 import SwiftUI
 
 struct SearchBarView: View {
-    let placeholder: String
-    @State private var searchText: String = ""
+    var placeholder: String
+    @Binding var text: String
 
     var body: some View {
         HStack {
-            TextField(placeholder, text: $searchText)
+            TextField(placeholder, text: $text)
                 .padding(10)
-                .background(Color.gray.opacity(0.2))
+                .background(Color.white.opacity(0.2))
                 .cornerRadius(8)
                 .foregroundColor(.white)
+                .padding(.horizontal)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
 
             Button(action: {
-                searchText = ""
+                text = ""
             }) {
                 Image(systemName: "xmark")
                     .foregroundColor(.white)

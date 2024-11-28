@@ -8,7 +8,12 @@
 import Foundation
 import Combine
 
-final class FetchProductsUseCase: DisposeObject, MoviesUseCaseContract {
+final class FetchMoviesUseCase: DisposeObject, MoviesUseCaseContract {
+//    func executeMovies(with genreID: Int?, and page: Int) -> AnyPublisher<MoviesResponse, any Error> {
+//        <#code#>
+//    }
+    
+    
     // MARK: - PROPERTIES
     private let repository: MoviesListRepositoryContract
 
@@ -19,7 +24,11 @@ final class FetchProductsUseCase: DisposeObject, MoviesUseCaseContract {
     }
 
     // MARK: - EXECUTE USE CASE
-    func executeGenres() -> AnyPublisher<[GenreResponse], Error> {
+    func executeGenres() -> AnyPublisher<GenreResponse, Error> {
         return repository.fetchGenresList()
+    }
+    
+    func executeMovies(with genreID: Int?, and page: Int) -> AnyPublisher<MoviesResponse, Error> {
+        return repository.fetchMoviesList(with: genreID, and: page)
     }
 }

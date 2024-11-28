@@ -29,9 +29,22 @@
 		FEBF812B2CF691FE00449F01 /* SwiftUICombineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUICombineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FE7E54122CF75917002F314F /* Exceptions for "SwiftUICombine" folder in "SwiftUICombine" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FEBF81102CF691FC00449F01 /* SwiftUICombine */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		FEBF81132CF691FC00449F01 /* SwiftUICombine */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FE7E54122CF75917002F314F /* Exceptions for "SwiftUICombine" folder in "SwiftUICombine" target */,
+			);
 			path = SwiftUICombine;
 			sourceTree = "<group>";
 		};
@@ -271,6 +284,8 @@
 /* Begin XCBuildConfiguration section */
 		FEBF81332CF691FE00449F01 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = FEBF81132CF691FC00449F01 /* SwiftUICombine */;
+			baseConfigurationReferenceRelativePath = XConfig/Development.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -334,6 +349,8 @@
 		};
 		FEBF81342CF691FE00449F01 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = FEBF81132CF691FC00449F01 /* SwiftUICombine */;
+			baseConfigurationReferenceRelativePath = XConfig/Production.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -399,6 +416,7 @@
 				DEVELOPMENT_TEAM = 4CSX2FB3Y9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftUICombine/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +446,7 @@
 				DEVELOPMENT_TEAM = 4CSX2FB3Y9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftUICombine/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

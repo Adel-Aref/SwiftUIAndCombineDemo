@@ -10,5 +10,6 @@ import Foundation
 import Combine
 
 protocol MoviesListServiceContract {
-    func fetchGenresList() -> AnyPublisher<[GenreResponse], Error>
+    func fetchGenresList() -> AnyPublisher<GenreResponse, Error>
+    func fetchMoviesList(with genreID: Int?, and page: Int) -> AnyPublisher<MoviesResponse, Error>
 }

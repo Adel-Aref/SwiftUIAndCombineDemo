@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct FilterTabView: View {
-    let category: CategoryModel
-    let action: () -> Void
-
+    var category: CategoryModel
+    var isSelected: Bool
+    var action: () -> Void
+    
     var body: some View {
-        Button(action: {
-            action()
-        }) {
+        VStack {
             Text(category.title)
                 .fontWeight(.bold)
                 .font(.system(size: 14))
@@ -24,15 +23,20 @@ struct FilterTabView: View {
                 .foregroundColor(category.isSelected ? .black : .white)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(category.isSelected ? Color.yellow : Color.yellow, lineWidth: 1)
+                        .stroke(category.isSelected ? Color.yellow : Color.yellow, lineWidth: 2)
                 )
                 .cornerRadius(20)
+                .onTapGesture {
+                    action()
+                }
         }
+        .frame(maxWidth: .infinity)
+        .animation(.easeInOut, value: isSelected)
     }
 }
 
-struct CategoryModel: Identifiable {
-    let id = UUID()
+struct CategoryModel: Identifiable, Equatable {
+    let id: Int
     let title: String
     var isSelected: Bool
 }
