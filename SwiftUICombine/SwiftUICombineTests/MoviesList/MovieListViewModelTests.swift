@@ -33,12 +33,10 @@ class MovieListViewModelTests: XCTestCase {
     func testGetGenreList_Success() {
         let expectation = self.expectation(description: "Genres loaded")
         
-        // Simulate successful genre fetch
         mockUseCase.shouldReturnError = false
         
         viewModel.getGenreList()
         
-        // Check that genreFilterList is populated
         viewModel.$genreFilterList
             .dropFirst()
             .sink { genres in
@@ -54,12 +52,10 @@ class MovieListViewModelTests: XCTestCase {
     func testGetMovieList_Success() {
         let expectation = self.expectation(description: "Movies loaded")
         
-        // Simulate successful movie fetch
         mockUseCase.shouldReturnError = false
         
         viewModel.getMovieList(with: 1, and: 1)
         
-        // Check that movieList is populated
         viewModel.$movieList
             .dropFirst()
             .sink { movies in
@@ -72,27 +68,22 @@ class MovieListViewModelTests: XCTestCase {
         waitForExpectations(timeout: 1)
     }
     
-    // Test for pagination
     func testLoadNextPage() {
         let expectation = self.expectation(description: "Next page loaded")
         
-        // Simulate successful movie fetch
         mockUseCase.shouldReturnError = false
         
-        // Initially load the first page
         viewModel.getMovieList(with: 1, and: 1)
         
         viewModel.$movieList
-            .dropFirst(2) // Skip the initial movie list load
+            .dropFirst(2)
             .sink { movies in
-                XCTAssertEqual(movies.count, 4) // 2 movies from the first page + 2 from the second
+                XCTAssertEqual(movies.count, 4)
                 XCTAssertEqual(self.viewModel.currentPage, 2)
                 expectation.fulfill()
             }
             .store(in: &cancellables)
-        
-        // Load the next page
-        viewModel.loadNextPage()
+            viewModel.loadNextPage()
         
         waitForExpectations(timeout: 1)
     }
@@ -100,13 +91,10 @@ class MovieListViewModelTests: XCTestCase {
     func testFilterMovies() {
         let expectation = self.expectation(description: "Movies filtered")
         
-        // Simulate successful movie fetch
         mockUseCase.shouldReturnError = false
         
-        // Load initial movie list
         viewModel.getMovieList(with: 1, and: 1)
         
-        // Set search text to filter
         viewModel.searchText = "Movie 1"
         
         viewModel.$filteredMovies

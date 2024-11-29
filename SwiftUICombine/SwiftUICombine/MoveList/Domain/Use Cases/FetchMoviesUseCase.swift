@@ -9,10 +9,6 @@ import Foundation
 import Combine
 
 final class FetchMoviesUseCase: DisposeObject, MoviesUseCaseContract {
-//    func executeMovies(with genreID: Int?, and page: Int) -> AnyPublisher<MoviesResponse, any Error> {
-//        <#code#>
-//    }
-    
     
     // MARK: - PROPERTIES
     private let repository: MoviesListRepositoryContract
