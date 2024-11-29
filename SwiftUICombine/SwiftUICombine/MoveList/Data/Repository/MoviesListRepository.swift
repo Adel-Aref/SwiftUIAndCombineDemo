@@ -21,9 +21,7 @@ final class MoviesListRepository: MoviesListRepositoryContract {
     
     // MARK: - REPOSITORY METHODS
     func fetchGenresList() -> AnyPublisher<GenreResponse, Error> {
-        // 1. Check for cached data and return immediately if available.
         if let cachedGenres = localDataSource.getCachedGenres() {
-            // 2. Return cached data right away, but still perform the fetch to update the cache.
             _ = service.fetchGenresList()
                 .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] response in
                     self?.localDataSource.cacheGenres(response)
@@ -32,7 +30,6 @@ final class MoviesListRepository: MoviesListRepositoryContract {
                 .setFailureType(to: Error.self)
                 .eraseToAnyPublisher()
         } else {
-            // 3. If no cached data, fetch from remote and cache the result.
             return service.fetchGenresList()
                 .handleEvents(receiveOutput: { [weak self] response in
                     self?.localDataSource.cacheGenres(response)

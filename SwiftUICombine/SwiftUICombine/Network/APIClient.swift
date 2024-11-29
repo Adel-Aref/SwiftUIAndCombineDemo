@@ -50,9 +50,7 @@ class URLSessionAPIClient<EndpointType: APIEndpoint>: APIContract {
         guard let url = urlComponents?.url else {
             return Fail(error: APIError.requestFailed).eraseToAnyPublisher()
         }
-        
-        // Create the URLRequest
-        
+                
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.httpBody = endpoint.body
