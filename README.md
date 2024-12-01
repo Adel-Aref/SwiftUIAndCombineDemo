@@ -30,7 +30,7 @@ To get started with the project, follow these steps:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/adel-aref/movie-app.git
+    git clone https://github.com/Adel-Aref/SwiftUIAndCombineDemo.git
     ```
 
 2. Open the project in Xcode:
