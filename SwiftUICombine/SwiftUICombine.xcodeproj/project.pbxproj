@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FE2634E42CFBE2EB001F7383 /* CoreModule in Frameworks */ = {isa = PBXBuildFile; productRef = FE2634E32CFBE2EB001F7383 /* CoreModule */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		FEBF81222CF691FE00449F01 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE2634DF2CFBDF07001F7383 /* CoreModule */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreModule; sourceTree = "<group>"; };
 		FEBF81112CF691FC00449F01 /* SwiftUICombine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUICombine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEBF81212CF691FE00449F01 /* SwiftUICombineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUICombineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEBF812B2CF691FE00449F01 /* SwiftUICombineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUICombineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE2634E42CFBE2EB001F7383 /* CoreModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,12 +91,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE2634E22CFBE2D7001F7383 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FEBF81082CF691FC00449F01 = {
 			isa = PBXGroup;
 			children = (
+				FE2634DF2CFBDF07001F7383 /* CoreModule */,
 				FEBF81132CF691FC00449F01 /* SwiftUICombine */,
 				FEBF81242CF691FE00449F01 /* SwiftUICombineTests */,
 				FEBF812E2CF691FE00449F01 /* SwiftUICombineUITests */,
+				FE2634E22CFBE2D7001F7383 /* Frameworks */,
 				FEBF81122CF691FC00449F01 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -125,6 +140,7 @@
 			);
 			name = SwiftUICombine;
 			packageProductDependencies = (
+				FE2634E32CFBE2EB001F7383 /* CoreModule */,
 			);
 			productName = SwiftUICombine;
 			productReference = FEBF81112CF691FC00449F01 /* SwiftUICombine.app */;
@@ -577,6 +593,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FE2634E32CFBE2EB001F7383 /* CoreModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FEBF81092CF691FC00449F01 /* Project object */;
 }

@@ -8,11 +8,11 @@
 
 import Combine
 
-class DisposeObject {
-    var deinitCalled: (() -> Void)?
-    var cancellables: Set<AnyCancellable>
+open class DisposeObject {
+    public var deinitCalled: (() -> Void)?
+    public var cancellables: Set<AnyCancellable>
 
-    init() {
+    public init() {
         self.cancellables = Set<AnyCancellable>()
     }
 

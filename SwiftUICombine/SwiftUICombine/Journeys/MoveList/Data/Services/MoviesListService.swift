@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreModule
 
 final class MoviesListService: DisposeObject, MoviesListServiceContract {
     private var apiClient = URLSessionAPIClient<MoviesListEndpoint>()

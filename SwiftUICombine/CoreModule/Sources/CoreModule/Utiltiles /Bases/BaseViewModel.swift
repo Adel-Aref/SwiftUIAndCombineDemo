@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class BaseViewModel: DisposeObject {
+open class BaseViewModel: DisposeObject {
     // MARK: - PROPERTIES
-    @Published var state: ViewModelState<BaseError> = .idle
+    @Published public var state: ViewModelState<BaseError> = .idle
 }

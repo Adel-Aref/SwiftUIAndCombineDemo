@@ -23,25 +23,25 @@ public protocol APIContract {
 //    }
 //}
 
-protocol URLSessionProtocol {
+public protocol URLSessionProtocol {
     func dataTaskPublisher(for request: URLRequest) -> URLSession.DataTaskPublisher
 }
 
 extension URLSession: URLSessionProtocol {}
 
 
-class URLSessionAPIClient<EndpointType: APIEndpoint>: APIContract {
+public class URLSessionAPIClient<EndpointType: APIEndpoint>: APIContract {
     private var session: URLSessionProtocol
     
     // MARK: - Init
     
-    init(session: URLSessionProtocol = URLSession.shared) {
+    public init(session: URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
     
     // MARK: - Request
     
-    func request<T: Decodable>(_ endpoint: EndpointType, responseModel: T.Type) -> AnyPublisher<T, Error> {
+    public func request<T: Decodable>(_ endpoint: EndpointType, responseModel: T.Type) -> AnyPublisher<T, Error> {
         
         // Build the URL
         var urlComponents = URLComponents(url: endpoint.baseURL.appendingPathComponent(endpoint.path), resolvingAgainstBaseURL: false)

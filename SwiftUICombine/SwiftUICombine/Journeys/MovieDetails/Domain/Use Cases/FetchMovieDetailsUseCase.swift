@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreModule
 
 final class FetchMovieDetailsUseCase: DisposeObject, MovieDetailsUseCaseContract {
     

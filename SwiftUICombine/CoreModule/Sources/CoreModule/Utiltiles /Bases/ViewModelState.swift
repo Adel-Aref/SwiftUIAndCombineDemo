@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ViewModelState<Error> {
+public enum ViewModelState<Error> {
     case idle
     case loading(message: String? = nil)
     case successful
@@ -34,7 +34,7 @@ extension ViewModelState {
 }
 
 extension ViewModelState: Equatable {
-    static func == (lhs: ViewModelState<Error>, rhs: ViewModelState<Error>) -> Bool {
+    public static func == (lhs: ViewModelState<Error>, rhs: ViewModelState<Error>) -> Bool {
         switch (lhs, rhs) {
         case (.idle, .idle): return true
         case (.loading, .loading): return true
@@ -66,11 +66,11 @@ extension ViewModelState {
     }
 }
 
-struct BaseError: Error, Codable {
+public struct BaseError: Error, Codable {
     let title: String? = ""
     let message: String?
     
-    init(
+    public init(
         message: String? = nil
     ) {
         self.message = message

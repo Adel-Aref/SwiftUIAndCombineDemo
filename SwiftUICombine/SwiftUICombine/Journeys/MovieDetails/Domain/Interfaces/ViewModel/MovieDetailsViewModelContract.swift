@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreModule
 
 typealias MovieDetailsViewModelContract = BaseViewModel & ObservableObject  & MovieDetailsViewModelInput & MovieDetailsViewModelOutput
 

@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import CoreModule
 
 class MovieListViewModel: MovieListViewModelContract {
     
@@ -64,6 +65,7 @@ class MovieListViewModel: MovieListViewModelContract {
             selectedGenreID = updatedGenre.id
             return updatedGenre
         }
+        getMovieList(with: selectedCategory.id, and: currentPage)
     }
     
     func getMovieList(with genreId: Int? = nil, and page: Int) {
