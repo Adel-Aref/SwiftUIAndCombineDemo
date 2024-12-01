@@ -24,7 +24,6 @@ class MovieListViewModel: MovieListViewModelContract {
     
     private var totalPages: Int = 1
     var selectedGenreID: Int = 1
-    
     // MARK: - INIT
     init(
         useCase: MoviesUseCaseContract = FetchMoviesUseCase()
@@ -96,12 +95,12 @@ class MovieListViewModel: MovieListViewModelContract {
     }
     
     func filterMovies() {
-           if searchText.isEmpty {
-               filteredMovies = movieList
-           } else {
-               filteredMovies = movieList.filter { movie in
-                   movie.title?.lowercased().contains(searchText.lowercased()) ?? false
-               }
-           }
-       }
+        if searchText.isEmpty {
+            filteredMovies = movieList
+        } else {
+            filteredMovies = movieList.filter { movie in
+                movie.title?.lowercased().contains(searchText.lowercased()) ?? false
+            }
+        }
+    }
 }

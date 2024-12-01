@@ -15,7 +15,6 @@ struct MovieCardView: View {
             AsyncImage(url: movie.fullPosterUrl) { phase in
                 switch phase {
                 case .empty:
-                    // Placeholder when loading
                     ProgressView()
                         .frame(width: 150, height: 225)
                         .background(Color.gray.opacity(0.3))

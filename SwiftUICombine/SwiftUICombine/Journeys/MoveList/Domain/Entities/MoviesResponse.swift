@@ -38,26 +38,3 @@ struct MovieItem: Codable, Identifiable {
         case voteAverage = "vote_average"
     }
 }
-
-struct MovieVM: Codable, Identifiable {
-    var id: Int
-    var title: String?
-    var releaseDate: String?
-    var posterPath: String?
-    
-    private let baseUrl = "https://image.tmdb.org/t/p/w500/"
-    
-    init(from response: MovieItem) {
-        self.id = response.id
-        self.title = response.title
-        self.releaseDate = response.releaseDate
-        self.posterPath = response.posterPath.flatMap { baseUrl + $0 }
-    }
-    
-    var fullPosterUrl: URL? {
-        guard let posterPath = posterPath else { return nil }
-        return URL(string: posterPath)
-    }
-}
-
-//self.posterPath = "https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg"

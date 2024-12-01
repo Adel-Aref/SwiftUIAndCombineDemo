@@ -61,7 +61,7 @@ struct MovieListView: View {
                     ScrollView(showsIndicators: false,
                                content: {
                         LazyVStack(alignment: .leading, spacing: 12) {
-                            MovieGridView(movies: viewModel.filteredMovies, viewModel: viewModel)
+                            MovieGridView(viewModel: viewModel)
                                 .padding(.horizontal)
                             Spacer()
                         }

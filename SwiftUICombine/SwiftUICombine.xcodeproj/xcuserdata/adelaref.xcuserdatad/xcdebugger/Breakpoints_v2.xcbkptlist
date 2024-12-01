@@ -7,64 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "ACCAAA59-107D-4C21-8FF8-990070146412"
+            uuid = "2D51F7AE-93A4-427B-842A-D70E60E6B849"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftUICombineTests/MoviesList/MovieListViewModelTests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "setUp()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "15D4C3E8-93A2-4B3D-B7C5-2A961B0E8293"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftUICombineTests/MoviesList/MovieListViewModelTests.swift"
+            filePath = "SwiftUICombine/Journeys/MovieDetails/Presentation/ViewModel/MovieDetailsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
             endingLineNumber = "36"
-            landmarkName = "testGetGenreList_Success()"
+            landmarkName = "getMovieDetails(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2C94E07F-7B2F-4524-82E7-3302A98A7651"
+            uuid = "FD60C9F8-C442-495B-A6E9-C90154B2E6CA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftUICombine/Network/APIClient.swift"
+            filePath = "SwiftUICombine/Journeys/MovieDetails/Presentation/ViewModel/MovieDetailsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "request(_:responseModel:)"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "getMovieDetails(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "06F24736-0A77-44F0-8440-F1066098DAAE"
+            uuid = "7B084430-E767-4B13-A6C0-8A38FCECBDCA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftUICombine/Network/APIClient.swift"
+            filePath = "SwiftUICombine/Journeys/MovieDetails/Presentation/ViewModel/MovieDetailsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "request(_:responseModel:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getMovieDetails(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -16,7 +16,6 @@ protocol MovieListViewModelInput {
 }
 
 protocol MovieListViewModelOutput {
-//    var movieID : String { get }
     var genreFilterList: [CategoryModel] { get set }
     var movieList: [MovieVM] { get set }
 }

@@ -1,18 +1,12 @@
 //
-//  GenreResponse.swift
+//  GenreVM.swift
 //  SwiftUICombine
 //
-//  Created by Adel Aref on 27/11/2024.
+//  Created by Adel Aref on 30/11/2024.
 //
 
-struct GenreResponse: Codable {    
-    var genres: [GenreItem]?
-}
+import Foundation
 
-struct GenreItem: Codable, Identifiable {
-    var id: Int
-    var name: String?
-}
 
 struct GenreVM: Codable, Identifiable {
     var id: Int
@@ -24,3 +18,4 @@ struct GenreVM: Codable, Identifiable {
         self.title = response.name
     }
 }
+
