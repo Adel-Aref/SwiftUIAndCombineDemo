@@ -72,11 +72,6 @@ The app uses different schemes for various environments and configurations:
 - **Production**: For the production environment.
 - **Test**: For running tests and checking app behavior during development.
 
-## Future Improvements
-
-- Implement pagination in the movie list to handle large datasets.
-- Add more detailed error handling for API requests.
-- Enhance caching mechanism for offline support.
 
 ## Contribution
 
