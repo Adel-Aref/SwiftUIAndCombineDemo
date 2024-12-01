@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SwiftUICombineApp: App {
+    @StateObject private var coordinator = AppCoordinator()
+
     var body: some Scene {
         WindowGroup {
-            MovieListView()
+            coordinator.rootView
+                            .environmentObject(coordinator)
         }
     }
 }

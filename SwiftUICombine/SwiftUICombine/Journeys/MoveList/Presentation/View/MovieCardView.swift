@@ -23,7 +23,7 @@ struct MovieCardView: View {
             )
             .padding(.bottom, 8)
             
-            Text(movie.title ?? "No Title Available")
+            Text(movie.title ?? .empty)
                 .font(.headline)
                 .foregroundColor(.white)
                 .lineLimit(1)
