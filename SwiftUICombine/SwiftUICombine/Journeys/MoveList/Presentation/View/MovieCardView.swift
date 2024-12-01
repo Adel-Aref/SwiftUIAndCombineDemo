@@ -8,44 +8,27 @@ import SwiftUI
 
 struct MovieCardView: View {
     let movie: MovieVM
+    let numberOfCards: CGFloat = 2
+    let padding: CGFloat = 24
     
     var body: some View {
         VStack(alignment: .leading) {
-            // Use AsyncImage to load image from URL
-            AsyncImage(url: movie.fullPosterUrl) { phase in
-                switch phase {
-                case .empty:
-                    ProgressView()
-                        .frame(width: 150, height: 225)
-                        .background(Color.gray.opacity(0.3))
-                        .cornerRadius(8)
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 150, height: 225)
-                        .cornerRadius(8)
-                        .clipped()
-                case .failure:
-                    // Placeholder image on failure
-                    Image(systemName: "photo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 150, height: 225)
-                        .cornerRadius(8)
-                        .clipped()
-                @unknown default:
-                    EmptyView()
-                }
-            }
-            .padding(.bottom, 8)  // Padding below the image
+            AsyncImageView(
+                url: movie.fullPosterUrl,
+                width: (UIScreen.main.bounds.width - (2 * padding)) / numberOfCards,
+                height: 240,
+                cornerRadius: 8,
+                placeholderImage: "photo",
+                shadowRadius: 8
+            )
+            .padding(.bottom, 8)
             
             Text(movie.title ?? "No Title Available")
                 .font(.headline)
                 .foregroundColor(.white)
                 .lineLimit(1)
             
-            Text(movie.releaseDate ?? "No Release Date")
+            Text(movie.releaseYear)
                 .font(.subheadline)
                 .foregroundColor(.gray)
         }

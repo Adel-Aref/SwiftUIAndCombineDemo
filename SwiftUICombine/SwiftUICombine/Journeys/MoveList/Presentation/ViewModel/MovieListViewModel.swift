@@ -83,7 +83,6 @@ class MovieListViewModel: MovieListViewModelContract {
                     self?.movieList.append(contentsOf: response.results?.map { MovieVM(from: $0) } ?? [])
                     self?.filteredMovies.append(contentsOf: response.results?.map { MovieVM(from: $0) } ?? [])
                 }
-                
                 self?.totalPages = response.totalPages ?? 1
                 self?.state = .successful
             }
